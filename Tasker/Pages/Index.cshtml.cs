@@ -1,12 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Tasker.Pages
 {
     public class IndexModel : PageModel
     {
+        private ApplicationDbContext _context;
+        public IEnumerable<Task> Tasks;
+
+        public IndexModel(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public void OnGet()
         {
+            Tasks = _context.Tasks.OrderBy(x => x.Priority);
         }
     }
 }
