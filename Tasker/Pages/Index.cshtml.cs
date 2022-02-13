@@ -8,7 +8,7 @@ namespace Tasker.Pages
     public class IndexModel : PageModel
     {
         private ApplicationDbContext _context;
-        public IEnumerable<Task> Tasks;
+        public IEnumerable<Task> Tasks { get; set; }
 
         public IndexModel(ApplicationDbContext context)
         {
